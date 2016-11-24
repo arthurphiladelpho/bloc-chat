@@ -8,8 +8,16 @@
 <body>
     <!-- Add Navigation SideBar -->
     <!-- Ui-View For Testing Purposes -->
-    <ui-view></ui-view>
-		<!-- Angular -->
+    <!-- <div id="sidebar">
+        <h1>Bloc Chat</h1>
+        
+    </div> -->
+    <div id="container">
+        <ui-view></ui-view>
+    </div>
+		
+
+    <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <!-- UI-Router -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
@@ -28,9 +36,13 @@
     </script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
     <!-- app.js -->
     <script src="/scripts/app.js"></script>
     <!-- HomeCtrl -->
     <script src="/scripts/controllers/HomeCtrl.js"></script>
+    <!-- Room Factory -->
+    <script src="/scripts/factories/Room.js"></script>
+
 </body>
 </html>

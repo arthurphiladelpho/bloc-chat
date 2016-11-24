@@ -1,10 +1,15 @@
 (function(){
-	function HomeCtrl(){
-		alert('hello world');
+	function HomeCtrl($scope, Room){
+		$scope.title = 'Bloc Chat';
+		$scope.all = Room.all;
+		for(var i = 0; i < 3; i++){
+			$scope.all.push('Chat room number ' + i);
+		}
+		console.log($scope.all);
 	}
 
 	angular
 			.module('blocChat')
-			.controller('HomeCtrl', HomeCtrl);
+			.controller('HomeCtrl', [ '$scope', 'Room', HomeCtrl]);
 
 })();
