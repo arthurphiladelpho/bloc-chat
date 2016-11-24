@@ -1,13 +1,15 @@
 (function(){
 	function HomeCtrl($scope, Room){
 		$scope.title = 'Bloc Chat';
-		$scope.all = Room.all;
+		$scope.rooms = Room.all;
 		for(var i = 0; i < 3; i++){
-			$scope.all.push({
-				title : 'room'
+			$scope.rooms.push({
+				title : 'Room',
+				number : i
 			});
 		}
-		console.log($scope.all);
+		console.log('**********');
+		console.log($scope.rooms);
 	}
 
 	angular
