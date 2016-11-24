@@ -1,9 +1,9 @@
 <div id="sidebar">
-	<h1>Bloc Chat</h1>        
+	<h1>Bloc Chat</h1> 
+	<div id="roomList" ng-repeat='room in home.all'>
+		<p> {{ room.title }} </p>
+	</div>       
 </div>
 <div id="content">
-	<h1>Listen here, listen, listen here</h1>
-	<div id="roomList" ng-repeat='room in home.all'>
-		<span>{{room}}</span>
-	</div>
+	
 </div>
