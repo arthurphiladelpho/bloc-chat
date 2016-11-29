@@ -1,12 +1,19 @@
 (function(){
-	function HomeCtrl($scope, Room){
+	function HomeCtrl($scope, $modal){
 		$scope.title = 'Bloc Chat';
-		$scope.rooms = Room.all;
+
+		$scope.open = function(){
+			console.log('opening modal...');
+			var modalInstance = $modal.open({
+				templateUrl: '/templates/modal.html',
+				controller: 'ModalCtrl'
+			});
+		};
 		
 	}
 
 	angular
 			.module('blocChat')
-			.controller('HomeCtrl', [ '$scope', 'Room', HomeCtrl]);
+			.controller('HomeCtrl', [ '$scope', '$modal', HomeCtrl]);
 
 })();
