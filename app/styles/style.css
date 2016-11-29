@@ -21,3 +21,21 @@
 	background-color: #eeeeee;
 	text-align: center;
 } 
+
+.closeBtn {
+	float: right;
+}
+
+form {
+	text-align: center;
+}
+
+
+#newRoom,
+#submitBtn {
+	display: block;
+	vertical-align: middle;
+	padding: 10px;
+	margin: 10px auto;
+}
+
