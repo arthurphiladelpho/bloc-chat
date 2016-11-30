@@ -12,7 +12,18 @@
 				url: '/',
 				controller: 'HomeCtrl as home',
 				templateUrl: '/templates/home.html'
-			});
+			})
+			.state( 'home.monstro', {
+				url: 'monstro',
+				controller: 'MonstroCtrl',
+				templateUrl: '/templates/monstro.html'
+			})
+			.state( 'home.champ', {
+				url: 'champ',
+				controller: 'ChampCtrl',
+				templateUrl: '/templates/champ.html'
+			})
+			;
 	}
 
 	angular

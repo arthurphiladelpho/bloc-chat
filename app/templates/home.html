@@ -1,13 +1,16 @@
 <div id="sidebar">
 
-  <h1>{{ title }}</h1> 
-	<button type="button" class="button" ng-click="open()">Create a new room</button> 
-	
-	<div id="roomList" ng-repeat="room in rooms">
-		<p> {{ room.$value }} </p>
-  </div>     
+  <a ui-sref="home"><h1>{{ title }}</h1></a> 
+  <button type="button" class="button" ng-click="open()">Create a new room</button> 
+  <br> 
+  <div id="roomList" ng-repeat="room in rooms">
+  		<!-- Se clicar aqui algo acontece -->
+  			<!-- Funcao do click vai pegar o nom -->
+      <a ui-sref=".{{ room.$value }}"> {{ room.$value }} </a>
+  </div>         
 
 </div>
-<div id="content">
+
+<div id="content" ui-view>
 
 </div>
