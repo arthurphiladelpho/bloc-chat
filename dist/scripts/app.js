@@ -1,4 +1,4 @@
-(function(){
+	(function(){
 
 	function config($stateProvider, $locationProvider){
 		$locationProvider
@@ -13,15 +13,21 @@
 				controller: 'HomeCtrl as home',
 				templateUrl: '/templates/home.html'
 			})
-			.state('modal', {
-				url: '/modal',
-				controller: 'ModalCtrl as modal',
-				templateUrl: '/templates/modal.html'
-			});
+			.state( 'home.monstro', {
+				url: 'monstro',
+				controller: 'MonstroCtrl',
+				templateUrl: '/templates/monstro.html'
+			})
+			.state( 'home.champ', {
+				url: 'champ',
+				controller: 'ChampCtrl',
+				templateUrl: '/templates/champ.html'
+			})
+			;
 	}
 
 	angular
-		.module('blocChat', ['ui.router', 'firebase', 'ui.bootstrap'])
+		.module('blocChat', ['firebase', 'ui.bootstrap', 'ui.router', 'ngCookies'])
 		.config(config);
 
 })();

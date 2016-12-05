@@ -21,3 +21,47 @@
 	background-color: #eeeeee;
 	text-align: center;
 } 
+
+.closeBtn {
+	float: right;
+}
+
+form {
+	text-align: center;
+}
+
+
+#newRoom,
+#submitBtn {
+	display: block;
+	vertical-align: middle;
+	padding: 10px;
+	margin: 10px auto;
+}
+
+.chat {
+	display: block;
+	margin-right: 35px;
+	margin-top: 30px;
+}
+
+.chatMessage {
+	list-style-type: none;
+	padding: 8px;
+}
+
+.chatMessage:nth-child(odd) {
+    background: #dddddd;
+    text-align: left;
+}
+
+.chatMessage:nth-child(even) {
+    background: #bbbbbb;
+    text-align: right;
+}
+
+
+
+
+
+

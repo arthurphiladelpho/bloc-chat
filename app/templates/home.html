@@ -4,9 +4,9 @@
   <button type="button" class="button" ng-click="open()">Create a new room</button> 
   <br> 
   <div id="roomList" ng-repeat="room in rooms">
-  		<!-- Se clicar aqui algo acontece -->
-  			<!-- Funcao do click vai pegar o nom -->
-      <a ui-sref=".{{ room.$value }}"> {{ room.$value }} </a>
+
+      <a ng-click="setRoom(room.$id)" ui-sref=".{{ room.$value }}"> {{ room.$value }} </a>
+
   </div>         
 
 </div>

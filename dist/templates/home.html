@@ -1,9 +1,16 @@
 <div id="sidebar">
-	<h1>Bloc Chat</h1> 
-	<div id="roomList" ng-repeat="room in rooms">
-		<p> {{ room.title }} {{ room.number }} </p>
-	</div>       
+
+  <a ui-sref="home"><h1>{{ title }}</h1></a> 
+  <button type="button" class="button" ng-click="open()">Create a new room</button> 
+  <br> 
+  <div id="roomList" ng-repeat="room in rooms">
+
+      <a ng-click="setRoom(room.$id)" ui-sref=".{{ room.$value }}"> {{ room.$value }} </a>
+
+  </div>         
+
 </div>
-<div id="content">
+
+<div id="content" ui-view>
 
 </div>
