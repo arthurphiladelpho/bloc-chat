@@ -7,7 +7,11 @@
       console.log('username has to be set...');
       $modal.open({
         templateUrl: '/templates/usernameModal.html',
-        controller: 'UsernameModalCtrl'
+        controller: 'UsernameModalCtrl',
+        // Backdrop for click events
+        backdrop  : 'static',
+        // Esc key would still work
+        keyboard  : false
       })
     }
   }

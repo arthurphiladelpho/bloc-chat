@@ -4,9 +4,17 @@
         $scope.add = function(){
         	// retrieve value of placeholder and console.log it
         	var newUser = document.getElementById('newUser').value;
-        	console.log('creating ' + newUser + ' user!');
         	
-            // Room.all.$add(newRoom);    
+        	if(newUser == false){
+                alert('Please create a user.');
+                console.log('New User Must Be Defined.');
+            } else {
+                console.log('creating ' + newUser + ' user!');
+                //save username as cookie
+                //close modal
+                $modalInstance.dismiss('Close window.');
+            }
+            
         };
 
 	}
