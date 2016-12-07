@@ -5,12 +5,13 @@
   <br> 
   <div id="roomList" ng-repeat="room in rooms">
 
-      <a ng-click="setRoom(room.$id)" ui-sref=".{{ room.$value }}"> {{ room.$value }} </a>
+      <li ng-click="setRoom(room.$id)"> # {{room.$value}} </li>
 
   </div>         
-
 </div>
-
-<div id="content" ui-view>
-
+<div id="content">
+<form name="message-input" id="message-form" action="" ng-submit="sendMessage(newMessage)">
+		<input name="usermsg" type="text" id="usermsg" ng-model= "newMessage.text" size="63" required autofocus />
+</form>
+    <button type="submit" id="submitBtn" ng-click="sendMessage(newMessage)">Send</button>
 </div>

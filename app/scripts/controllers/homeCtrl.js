@@ -1,14 +1,14 @@
 (function(){
-	function HomeCtrl($scope, $modal, Room){
-		$scope.title = 'Bloc Chat';
+	function HomeCtrl($rootScope, $modal, Room){
+		$rootScope.title = 'Bloc Chat';
 
-		$scope.rooms = Room.all;
+		$rootScope.rooms = Room.all;
 		
-		$scope.activeRoom = null;
+		$rootScope.activeRoom = null;
 
 		console.log(Room.all);
 
-		$scope.open = function(){
+		$rootScope.open = function(){
 			console.log('opening modal...');
 			var modalInstance = $modal.open({
 				templateUrl: '/templates/modal.html',
@@ -17,11 +17,18 @@
 			console.log('modal open!')
 		};
 
-		$scope.setRoom = function(activeId){
+		$rootScope.setRoom = function(newRoomID){
 			console.log('setting room....')
-			$scope.activeRoom = activeId;
+			$rootScope.activeRoom = Room.getRoom(newRoomID);
 			console.log('room set!')
-			console.log('Active room is ' + $scope.activeRoom);
+			$rootScope.roomMessages = Room.getMessages(newRoomID);
+			console.log('Active room is ' + $rootScope.activeRoom);
+
+		};
+
+		$rootScope.sendMessage = function(newMessage) {
+		  $rootScope.newMessage = {};
+		  Message.send(newMessage.text, $rootScope.activeRoom);
 		};
 
 
@@ -30,6 +37,6 @@
 
 	angular
 			.module('blocChat')
-			.controller('HomeCtrl', [ '$scope', '$modal', 'Room', HomeCtrl]);
+			.controller('HomeCtrl', [ '$rootScope', '$modal', 'Room', HomeCtrl]);
 
 })();

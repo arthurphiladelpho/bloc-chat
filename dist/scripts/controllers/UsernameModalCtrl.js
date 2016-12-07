@@ -1,5 +1,5 @@
 (function(){
-	function UsernameModalCtrl($scope, $modalInstance){
+	function UsernameModalCtrl($scope, $modalInstance, $cookies){
         
         $scope.add = function(){
         	// retrieve value of placeholder and console.log it
@@ -11,7 +11,7 @@
             } else {
                 console.log('creating ' + newUser + ' user!');
                 //save username as cookie
-                //close modal
+                $cookies.put('blocChatCurrentUser', newUser);
                 $modalInstance.dismiss('Close window.');
             }
             
@@ -21,6 +21,6 @@
 
 	angular
 			.module('blocChat')
-			.controller('UsernameModalCtrl', ['$scope', '$modalInstance', UsernameModalCtrl ]);
+			.controller('UsernameModalCtrl', ['$scope', '$modalInstance', '$cookies', UsernameModalCtrl ]);
 
 })();
