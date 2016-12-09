@@ -1,17 +1,29 @@
-<div id="sidebar">
-
-  <a ui-sref="home"><h1>{{ title }}</h1></a> 
-  <button type="button" class="button" ng-click="open()">Create a new room</button> 
-  <br> 
-  <div id="roomList" ng-repeat="room in rooms">
-
-      <li ng-click="setRoom(room.$id)"> # {{room.$value}} </li>
-
-  </div>         
+<div class="col-md-3 sidebar">
+	<div class="header">
+		<h1 class="title">Bloc Chat</h1>
+		<div class="new-chat-room">
+			<button class="btn btn-primary" ng-click="vm.openModal()"><strong>+</strong> New Chat Room</button>
+		</div>
+	</div>
+	
+	<section class="rooms-list">
+		<div ng-repeat="room in vm.chatRooms" class="chatrooms">
+			<a ng-click="vm.selectRoom(room)">{{ room.name }}</a>
+		</div>
+	</section>
 </div>
-<div id="content">
-<form name="message-input" id="message-form" action="" ng-submit="sendMessage(newMessage)">
-		<input name="usermsg" type="text" id="usermsg" ng-model= "newMessage.text" size="63" required autofocus />
-</form>
-    <button type="submit" id="submitBtn" ng-click="sendMessage(newMessage)">Send</button>
+
+<div class="col-md-9 chatroom">
+	<h3>{{ vm.selectedRoom.name }}</h3>
+	<p ng-repeat="message in vm.messages">
+		<strong>{{ message.username }} ({{ message.sentAt }}):</strong>  {{ message.content }}
+	</p>
+	
+	<form>
+		<div class="col-md-8 message-input">
+			<input type="text" placeholder="Write your message here..." class="form-control" ng-model="vm.newMessage">
+		</div>
+		<button class="col-md-1 btn btn-success" type="button" ng-click="vm.sendMessage()">Send</button>
+	</form>
 </div>
+

@@ -1,42 +1,40 @@
-(function(){
-	function HomeCtrl($rootScope, $modal, Room){
-		$rootScope.title = 'Bloc Chat';
-
-		$rootScope.rooms = Room.all;
+(function() {
+	function HomeCtrl(Room, Message, $uibModal){
+		var vm = this;
+		vm.chatRooms = Room.getRooms().all;
+        vm.selectRoom = function(room) {
+			vm.selectedRoom = room;
+			vm.messages = Room.getMessages(vm.selectedRoom.$id);
+		}
 		
-		$rootScope.activeRoom = null;
-
-		console.log(Room.all);
-
-		$rootScope.open = function(){
-			console.log('opening modal...');
-			var modalInstance = $modal.open({
+		vm.sendMessage = function() {
+			Message.send(vm.newMessage, vm.selectedRoom.$id);
+			vm.newMessage = '';
+		} 
+		
+		vm.openModal = function() {
+			var modalInstance = $uibModal.open({
 				templateUrl: '/templates/modal.html',
-				controller: 'ModalCtrl'
-			});
-			console.log('modal open!')
-		};
-
-		$rootScope.setRoom = function(newRoomID){
-			console.log('setting room....')
-			$rootScope.activeRoom = Room.getRoom(newRoomID);
-			console.log('room set!')
-			$rootScope.roomMessages = Room.getMessages(newRoomID);
-			console.log('Active room is ' + $rootScope.activeRoom);
-
-		};
-
-		$rootScope.sendMessage = function(newMessage) {
-		  $rootScope.newMessage = {};
-		  Message.send(newMessage.text, $rootScope.activeRoom);
-		};
-
-
+				controller: function ($scope, $uibModalInstance) {
+					$scope.newRoom = {name: ''};
+					$scope.cancel = function() {
+						$uibModalInstance.dismiss('cancel');
+					};
 		
-	}
-
+					$scope.create = function() {
+						$uibModalInstance.close($scope.newRoom);
+					};
+				},
+				size: 'md',
+			});
+			
+			modalInstance.result.then(function(data) {
+				Room.addRoom(data);
+			});
+		};
+	};
+	
 	angular
-			.module('blocChat')
-			.controller('HomeCtrl', [ '$rootScope', '$modal', 'Room', HomeCtrl]);
-
+		.module('blocChat')
+		.controller('HomeCtrl', ['Room', 'Message', '$uibModal', HomeCtrl]);
 })();
